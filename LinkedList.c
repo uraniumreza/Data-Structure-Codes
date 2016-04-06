@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define SWAP(a, b) int temp = a; a = b; b = temp;
+
 struct ListNode
 {
     int id;
@@ -10,6 +12,22 @@ struct ListNode
 
 struct ListNode *head, *tail;
 
+
+void Print()
+{
+    struct ListNode* temp = head;
+    if(temp == NULL)
+    {
+        printf("List is Empty!!\n");
+        return;
+    }
+    while(temp!=NULL)
+    {
+        printf("<%d, %d> ", temp->id, temp->freq);
+        temp = temp->next;
+    }
+    printf("\n");
+}
 
 void Insert(int data)
 {
@@ -115,24 +133,6 @@ void Find(int data)
 }
 
 
-void Print()
-{
-    struct ListNode* temp = head;
-    if(temp == NULL)
-    {
-        printf("List is Empty!!\n");
-        return;
-    }
-    while(temp!=NULL)
-    {
-        printf("%d %d\n",head, head->next);
-        printf("<%d, %d> ", temp->id, temp->freq);
-        temp = temp->next;
-    }
-    printf("\n");
-}
-
-
 void Reverse()
 {
     struct ListNode* left = NULL;
@@ -147,6 +147,37 @@ void Reverse()
     }
 
     head = left;
+
+    Print();
+}
+
+void reverseData()
+{
+    struct ListNode* first;
+    struct ListNode* second;
+
+    int length = 0;
+    struct ListNode* temp = head;
+    while(temp != NULL)
+    {
+        temp = temp->next;
+        length++;
+    }
+
+    printf("No of Nodes: %d\n", length);
+    first = head;
+    int i;
+    for(i=0;i<floor(length/2);i++)
+    {
+        int p = length - (i+1);
+        second = head;
+        while(p--)
+        {
+            second = second->next;
+        }
+        SWAP(first->id, second->id);
+        first = first->next;
+    }
 
     Print();
 }
@@ -182,7 +213,7 @@ int main()
         }
         else if(cmd == 'R')
         {
-            Reverse();
+            reverseData();
         }
         else if(cmd == 'T')
         {

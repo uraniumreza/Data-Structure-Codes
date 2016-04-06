@@ -11,8 +11,8 @@ int MAX(int a, int b)
 class BstNode
 {
     int data;
-    struct BstNode *left;
-    struct BstNode *right;
+    BstNode *left;
+    BstNode *right;
 
 public:
     //Function to find no of BstNodes in a tree.

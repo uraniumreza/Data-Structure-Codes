@@ -4,3 +4,6 @@
 *.gz
 *.mp3
 *.mkv
+.idea
+*.txt
+*.out
